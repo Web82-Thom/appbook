@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
+import '../../../routes/app_pages.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -11,7 +12,11 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-      backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        actions: [
+          IconButton(onPressed: (){Get.toNamed(Routes.WELCOME);}, icon: const Icon(Icons.exit_to_app))
+        ],
+        automaticallyImplyLeading: false,
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title:Text(controller.title),
         centerTitle: true,
       ),
