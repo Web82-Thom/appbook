@@ -1,3 +1,4 @@
+import 'package:appbook/app/modules/home/controllers/card_controller.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -8,9 +9,10 @@ import 'package:url_launcher/url_launcher.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
-
   @override
   Widget build(BuildContext context) {
+  CardController cardController = Get.put(CardController());
+
     return Scaffold(
       drawer: Drawer(
         child: ListView(
@@ -118,7 +120,7 @@ class HomeView extends GetView<HomeController> {
             ListTile(
               leading: const Icon(Icons.account_box, color: Colors.black, size: 20),
               title: const Text("À propos de moi"),
-              onTap: () {},
+              onTap: () {Get.toNamed(Routes.ABOUT_ME);},
             ),
             ListTile(
               leading: const Icon(Icons.grid_3x3_outlined, color: Colors.black, size: 20,),
@@ -159,50 +161,45 @@ class HomeView extends GetView<HomeController> {
         title: Text(controller.title),
         centerTitle: true,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              textAlign: TextAlign.center,
-              'You have pushed the button this many times:',
-            ),
-            Obx(
-              () => Text(
-                controller.count.string,
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
-            ),
-          ],
-        ),
+      body: Padding(
+      padding: const EdgeInsets.all(5.0),
+      child: GridView.count(
+        crossAxisCount: 2,
+        childAspectRatio: (2 / 1),
+        crossAxisSpacing: 5,
+        mainAxisSpacing: 5,
+        //physics:BouncingScrollPhysics(),
+        padding: EdgeInsets.all(5.0),
+        children: cardController.items!
+            .map(
+              (data) => GestureDetector(
+                  onTap: () {
+                    // Navigator.of(context).pushNamed(RouteName.GridViewBuilder);
+                    print(data.id);
+                  },
+                  child: Container(
+                    width: 150,
+                    padding: const EdgeInsets.all(8),
+    
+                    //  margin:EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                    color:data.color,
+                    // color: RandomColorModel().getColor(),
+                    child: Column(
+                      children: [
+                        Text(data.id.toString()),
+                        data.icon as Icon,
+                        Expanded(
+                          child: Text(data.title.toString(),
+                              style: const TextStyle(fontSize: 18, color: Colors.black),
+                              textAlign: TextAlign.center),
+                        )
+                      ],
+                    ),
+                  )),
+            )
+            .toList(),
       ),
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          FloatingActionButton(
-            onPressed: () {
-              controller.incrementCounter();
-            },
-            tooltip: 'Increment',
-            heroTag: null,
-            child: const Icon(Icons.add),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          FloatingActionButton(
-            onPressed: () {
-              controller.incrementCounterless();
-            },
-            tooltip: 'Increment',
-            heroTag: null,
-            child: const Text(
-              "-",
-              style: TextStyle(fontSize: 30.00),
-            ),
-          ),
-        ],
-      ),
+    ),
     );
   }
 }
