@@ -138,7 +138,9 @@ class HomeView extends GetView<HomeController> {
                 size: 20,
               ),
               title: const Text("Mon curriculum vitae "),
-              onTap: () {},
+              onTap: () {
+                Get.toNamed(Routes.CURRIVITAE);
+              },
             ),
             ListTile(
               leading: const Icon(Icons.contact_mail, color: Colors.black, size: 20),

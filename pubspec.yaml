@@ -16,6 +16,7 @@ dependencies:
   flutter_linkify: ^6.0.0
   cached_network_image: ^3.3.1
   cloud_firestore: ^4.16.1
+  syncfusion_flutter_pdfviewer: ^25.1.39
 
 dev_dependencies: 
   flutter_lints: ^3.0.0
@@ -26,3 +27,4 @@ flutter:
   uses-material-design: true
   assets:
   - assets/images/github.png
+  - assets/docs/cvThomasOrtaDevWebApp.pdf
