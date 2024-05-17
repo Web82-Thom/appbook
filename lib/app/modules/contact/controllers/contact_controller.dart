@@ -2,7 +2,7 @@
 
 import 'package:get/get.dart';
 
-class AboutMeController extends GetxController {
+class ContactController extends GetxController {
 
   final count = 0.obs;
   @override

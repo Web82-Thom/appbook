@@ -6,7 +6,7 @@ import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import '../controllers/currivitae_controller.dart';
 
 class CurrivitaeView extends GetView<CurrivitaeController> {
-  const CurrivitaeView({Key? key}) : super(key: key);
+  const CurrivitaeView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
