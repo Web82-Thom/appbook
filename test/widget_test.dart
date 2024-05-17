@@ -29,6 +29,7 @@ void main() {
   });
 }
 
+// ignore: camel_case_types
 class runApp {
   const runApp();
 }

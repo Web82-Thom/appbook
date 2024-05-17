@@ -7,7 +7,7 @@ class ItemsCard {
   String? title;
   Icon? icon;
 
-  ItemsCard({required this.id ,required this.color, required this.title, required this.icon,});
+  ItemsCard({this.id ,required this.color, required this.title, required this.icon,});
 
   Map<String, dynamic> toMap()=> {
 

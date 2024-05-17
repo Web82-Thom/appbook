@@ -1,7 +1,11 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:get/get.dart';
 
 import '../modules/aboutMe/bindings/about_me_binding.dart';
 import '../modules/aboutMe/views/about_me_view.dart';
+import '../modules/contact/bindings/contact_binding.dart';
+import '../modules/contact/views/contact_view.dart';
 import '../modules/currivitae/bindings/currivitae_binding.dart';
 import '../modules/currivitae/views/currivitae_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -36,6 +40,11 @@ class AppPages {
       name: _Paths.CURRIVITAE,
       page: () => const CurrivitaeView(),
       binding: CurrivitaeBinding(),
+    ),
+    GetPage(
+      name: _Paths.CONTACT,
+      page: () => const ContactView(),
+      binding: ContactBinding(),
     ),
   ];
 }
